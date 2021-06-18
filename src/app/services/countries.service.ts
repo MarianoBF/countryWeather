@@ -16,4 +16,8 @@ export class CountriesService {
       this.baseUrl + 'region/americas'
     ).toPromise();
   }
+
+  getCountryByCode(code: string): Promise<any> {
+    return this.HttpClient.get<any>(this.baseUrl + 'alpha/' + code).toPromise();
+  }
 }

@@ -1,1 +1,17 @@
-<p>country works!</p>
+<section>
+    <h1>País</h1>
+<div class="sectionContainer">
+  <h1>{{ country.name }}</h1>
+  <p>{{ country.capital }}</p>
+  <img class="countryFlag" src="{{ country.flag }}" alt="flag" />
+</div>
+</section>
+
+<section>
+    <h1>Clima</h1>
+<div class="sectionContainer">
+  <h1>{{ weather.current.weather_descriptions[0] }}</h1>
+  <p>Temperatura: {{ weather.current?.temperature }} Humedad {{ weather.current.humidity }} % </p>
+  <img class="countryFlag" src="{{ weather.current.weather_icons[0] }}" alt="flag" />
+</div>
+</section>
