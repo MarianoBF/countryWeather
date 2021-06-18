@@ -1,0 +1,8 @@
+<div class="multipleCardsContainer">
+    <div class="singleCardContainer" *ngFor="let country of countries">
+      <h1>{{ country.name }}</h1>
+      <p>{{ country.capital }}</p>
+      <img class="countryFlag" src="{{ country.flag }}" alt="flag" />
+    </div>
+  </div>
+  
