@@ -12,6 +12,7 @@ export class CountryComponent implements OnInit {
   country: any;
   weather: any;
   code: string;
+  load: boolean;
 
   constructor(
     private WeatherService: WeatherService,
@@ -21,6 +22,7 @@ export class CountryComponent implements OnInit {
     this.country = {};
     this.code = '';
     this.weather = {};
+    this.load = false;
   }
 
   ngOnInit(): void {
@@ -32,7 +34,10 @@ export class CountryComponent implements OnInit {
       .then((res) => {
         this.country = { ...res };
         this.WeatherService.getWeatherForCountry(this.country.name)
-          .then((res) => (this.weather = { ...res }))
+          .then((res) => {
+            this.weather = { ...res };
+            this.load = true;
+          })
           .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));

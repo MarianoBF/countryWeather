@@ -1,7 +1,18 @@
+<h1>
+  Países: hacé clic en la bandera de un país para ver más información y datos del clima
+</h1>
+
+<div class="regionSelector">
+<label>Región:</label>
+  <select (change)="changeRegion()" [(ngModel)]="selectedRegion">
+    <option *ngFor="let region of regionList" value={{region.value}}>{{region.name}}</option>
+  </select>
+</div>
+
 <div class="multipleCardsContainer">
     <div (click)="onClick(country.alpha3Code)" class="singleCardContainer" *ngFor="let country of countries">
-      <h1>{{ country.name }}</h1>
-      <p>Capital: {{ country.capital }}</p>
+      <h2>{{ country.name }}</h2>
+      <p *ngIf="country.capital">Capital: {{ country.capital }}</p>
       <img class="countryFlag" src="{{ country.flag }}" alt="flag" />
     </div>
   </div>

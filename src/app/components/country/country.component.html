@@ -1,17 +1,53 @@
-<section>
-    <h1>País</h1>
-<div class="sectionContainer">
-  <h1>{{ country.name }}</h1>
-  <p>{{ country.capital }}</p>
-  <img class="countryFlag" src="{{ country.flag }}" alt="flag" />
-</div>
-</section>
+<div *ngIf="load" class="container">
+  <div class="row">
+    <div class="col-xl">
+      <section>
+        <h1>País</h1>
+        <div class="singleCardContainer">
+          <h1>{{ country.name }}</h1>
+          <p *ngIf="country.capital">
+            <span class="categoryTitle">Capital:</span> {{ country.capital }}
+          </p>
+          <p>
+            <span class="categoryTitle">Idioma:</span>
+            {{ country.languages[0].name }}
+          </p>
+          <p>
+            <span class="categoryTitle">Subregion:</span>
+            {{ country.subregion }}
+          </p>
+          <p>
+            <span class="categoryTitle">Moneda:</span>
+            {{ country.currencies[0].name }}
+          </p>
+          <p *ngIf="country.area">
+            <span class="categoryTitle">Superficie:</span>
+            {{ country.area | number: "1.0" }} km<sup>2</sup>
+          </p>
+          <p>
+            <span class="categoryTitle">Población:</span>
+            {{ country.population | number: "1.0" }}
+          </p>
+          <img class="countryFlag" src="{{ country.flag }}" alt="flag" />
+        </div>
+      </section>
 
-<section>
-    <h1>Clima</h1>
-<div class="sectionContainer">
-  <h1>{{ weather.current.weather_descriptions[0] }}</h1>
-  <p>Temperatura: {{ weather.current?.temperature }} Humedad {{ weather.current.humidity }} % </p>
-  <img class="countryFlag" src="{{ weather.current.weather_icons[0] }}" alt="flag" />
+      <section>
+        <h1>Clima</h1>
+        <div class="singleCardContainer">
+          <h1>{{ weather.current.weather_descriptions[0] }}</h1>
+          <p>
+            Temperatura: {{ weather.current?.temperature }}°C -- Humedad
+            {{ weather.current.humidity }}%
+          </p>
+          <img
+            class="weatherIcon"
+            src="{{ weather.current.weather_icons[0] }}"
+            alt="flag"
+          />
+        </div>
+      </section>
+      <div class="backButton" [routerLink]="['paises']">Volver al listado</div>
+    </div>
+  </div>
 </div>
-</section>

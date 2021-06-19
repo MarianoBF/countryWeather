@@ -11,9 +11,9 @@ export class CountriesService {
     this.baseUrl = 'https://restcountries.eu/rest/v2/';
   }
 
-  getCountriesAmericas(): Promise<any[]> {
+  getCountriesByRegion(region:string): Promise<any[]> {
     return this.HttpClient.get<any[]>(
-      this.baseUrl + 'region/americas'
+      this.baseUrl + 'region/' + region
     ).toPromise();
   }
 
