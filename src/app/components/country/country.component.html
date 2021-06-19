@@ -5,7 +5,7 @@
 <div class="backButton" [routerLink]="['paises']">Volver al listado</div>
 </div>
 
-<div *ngIf="!isLoading" class="container">
+<div *ngIf="!isLoading && !noCountry" class="container">
   <div class="row">
     <div class="col-xl">
       <section>
