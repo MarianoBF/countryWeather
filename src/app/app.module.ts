@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { CountryComponent } from './components/country/country.component';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountriesComponent,
-    CountryComponent
+    CountryComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

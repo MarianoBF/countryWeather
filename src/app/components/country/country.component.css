@@ -35,3 +35,7 @@ h1 {
     text-align: center;
     cursor: pointer;
 }
+
+.weatherDescription::first-letter {
+    text-transform: capitalize;
+}

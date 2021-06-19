@@ -11,6 +11,7 @@ export class CountriesComponent implements OnInit {
   countries: any[];
   selectedRegion: string;
   regionList: any[];
+  isLoading: boolean;
 
   constructor(
     private router: Router,
@@ -19,17 +20,21 @@ export class CountriesComponent implements OnInit {
     this.countries = [];
     this.selectedRegion = 'americas';
     this.regionList = [
-      { id: 0, value: 'americas', name: 'América' },
-      { id: 1, value: 'africa', name: 'África' },
+      { id: 0, value: 'africa', name: 'África' },
+      { id: 1, value: 'americas', name: 'América' },
       { id: 2, value: 'asia', name: 'Asia' },
       { id: 3, value: 'europe', name: 'Europa' },
       { id: 4, value: 'oceania', name: 'Oceanía' },
     ];
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
     this.CountriesService.getCountriesByRegion(this.selectedRegion)
-      .then((res) => (this.countries = [...res]))
+      .then((res) => {
+        this.countries = [...res];
+        this.isLoading = false;
+      })
       .catch((error) => console.log(error));
   }
 
@@ -38,8 +43,12 @@ export class CountriesComponent implements OnInit {
   }
 
   changeRegion() {
+    this.isLoading = true;
     this.CountriesService.getCountriesByRegion(this.selectedRegion)
-      .then((res) => (this.countries = [...res]))
+      .then((res) => {
+        this.countries = [...res];
+        this.isLoading = false;
+      })
       .catch((error) => console.log(error));
   }
 }

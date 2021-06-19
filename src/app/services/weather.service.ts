@@ -8,7 +8,7 @@ export class WeatherService {
   baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://api.weatherstack.com/current?access_key=bb2788b908d5e87dce22bff14e59b153&query=';
+    this.baseUrl = 'https://api.openweathermap.org/data/2.5/weather?appid=dbb813b9b0607467b6238f2c5c550e69&lang=es&q=';
   }
   getWeatherForCountry(country:string): Promise<any[]> {
     return this.httpClient.get<any[]>(this.baseUrl+country).toPromise();

@@ -1,16 +1,24 @@
-<div *ngIf="load" class="container">
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div *ngIf="!isLoading" class="container">
   <div class="row">
     <div class="col-xl">
       <section>
         <h1>País</h1>
         <div class="singleCardContainer">
           <h1>{{ country.name }}</h1>
-          <p *ngIf="country.capital">
-            <span class="categoryTitle">Capital:</span> {{ country.capital }}
-          </p>
+          <div *ngIf="country.capital">
+            <p>
+              <span class="categoryTitle">Capital:</span> {{ country.capital }}
+            </p>
+          </div>
           <p>
             <span class="categoryTitle">Idioma:</span>
             {{ country.languages[0].name }}
+          </p>
+          <p>
+            <span class="categoryTitle">Region:</span>
+            {{ country.region }}
           </p>
           <p>
             <span class="categoryTitle">Subregion:</span>
@@ -20,10 +28,12 @@
             <span class="categoryTitle">Moneda:</span>
             {{ country.currencies[0].name }}
           </p>
-          <p *ngIf="country.area">
-            <span class="categoryTitle">Superficie:</span>
-            {{ country.area | number: "1.0" }} km<sup>2</sup>
-          </p>
+          <div *ngIf="country.area">
+            <p>
+              <span class="categoryTitle">Superficie:</span>
+              {{ country.area | number: "1.0" }} km<sup>2</sup>
+            </p>
+          </div>
           <p>
             <span class="categoryTitle">Población:</span>
             {{ country.population | number: "1.0" }}
@@ -35,16 +45,11 @@
       <section>
         <h1>Clima</h1>
         <div class="singleCardContainer">
-          <h1>{{ weather.current.weather_descriptions[0] }}</h1>
+          <h2 class="weatherDescription">{{ weather.weather[0].description }}</h2>
           <p>
-            Temperatura: {{ weather.current?.temperature }}°C -- Humedad
-            {{ weather.current.humidity }}%
+            Temperatura: {{ weather.main.temp-273 | number: "1.0-1" }}°C -- Humedad
+            {{ weather.main.humidity }}%
           </p>
-          <img
-            class="weatherIcon"
-            src="{{ weather.current.weather_icons[0] }}"
-            alt="flag"
-          />
         </div>
       </section>
       <div class="backButton" [routerLink]="['paises']">Volver al listado</div>
