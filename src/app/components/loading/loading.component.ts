@@ -12,7 +12,7 @@ export class LoadingComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    setInterval(()=>this.loadingMessage+=".", 300)
+    setInterval(()=>this.loadingMessage+=".", 200)
   }
 
 }

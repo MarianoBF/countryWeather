@@ -1,10 +1,15 @@
 <app-loading *ngIf="isLoading"></app-loading>
 
+<div  *ngIf="noCountry">
+<h2 class="noData">No hay datos para esta opción</h2>
+<div class="backButton" [routerLink]="['paises']">Volver al listado</div>
+</div>
+
 <div *ngIf="!isLoading" class="container">
   <div class="row">
     <div class="col-xl">
       <section>
-        <h1>País</h1>
+        <h1>País / Territorio</h1>
         <div class="singleCardContainer">
           <h1>{{ country.name }}</h1>
           <div *ngIf="country.capital">
@@ -44,7 +49,8 @@
 
       <section>
         <h1>Clima</h1>
-        <div class="singleCardContainer">
+        <h2 *ngIf="noWeather" class="noData">No hay datos del clima para esta opción</h2>
+        <div *ngIf="!noWeather" class="singleCardContainer">
           <h2 class="weatherDescription">{{ weather.weather[0].description }}</h2>
           <p>
             Temperatura: {{ weather.main.temp-273 | number: "1.0-1" }}°C -- Humedad

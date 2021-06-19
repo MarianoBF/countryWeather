@@ -39,3 +39,7 @@ h1 {
 .weatherDescription::first-letter {
     text-transform: capitalize;
 }
+
+.noData {
+    text-align: center;
+}

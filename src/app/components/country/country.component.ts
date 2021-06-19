@@ -13,6 +13,8 @@ export class CountryComponent implements OnInit {
   weather: any;
   code: string;
   isLoading: boolean;
+  noWeather: boolean;
+  noCountry: boolean;
 
   constructor(
     private WeatherService: WeatherService,
@@ -23,6 +25,8 @@ export class CountryComponent implements OnInit {
     this.code = '';
     this.weather = {};
     this.isLoading = true;
+    this.noWeather = false;
+    this.noCountry = false;
   }
 
   ngOnInit(): void {
@@ -35,12 +39,21 @@ export class CountryComponent implements OnInit {
         this.country = { ...res };
         this.WeatherService.getWeatherForCountry(this.country.name)
           .then((res) => {
+            console.log('res', res);
             this.weather = { ...res };
             this.isLoading = false;
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            console.log('error', error);
+
+            this.noWeather = true;
+            this.isLoading = false;
+          });
       })
-      .catch((error) => console.log(error));
-    }
- 
-    }
+      .catch((error) => {
+        console.log(error);
+        this.noCountry = true;
+        this.isLoading = false;
+      });
+  }
+}
