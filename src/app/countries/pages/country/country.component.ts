@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CountryResult } from '../../interfaces/country-results.interface';
 import { CountriesService } from '../../services/countries.service'
 
 @Component({
@@ -9,7 +11,7 @@ import { CountriesService } from '../../services/countries.service'
 })
 export class CountryComponent {
 
-  results$: any;
+  results$?: Observable<CountryResult[]>;
 
   searchTerm: string = ""
 

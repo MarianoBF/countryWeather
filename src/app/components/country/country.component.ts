@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
-import { CountriesService } from '../../services/countries.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,7 +17,6 @@ export class CountryComponent implements OnInit {
 
   constructor(
     private WeatherService: WeatherService,
-    private CountriesService: CountriesService,
     private activatedRoute: ActivatedRoute
   ) {
     this.country = {};
@@ -29,31 +27,31 @@ export class CountryComponent implements OnInit {
     this.noCountry = false;
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.code = params.country_code;
-    });
+  ngOnInit(): void {}
+  //   this.activatedRoute.params.subscribe((params) => {
+  //     this.code = params.country_code;
+  //   });
 
-    this.CountriesService.getCountryByCode(this.code)
-      .then((res) => {
-        this.country = { ...res };
-        this.WeatherService.getWeatherForCountry(this.country.name)
-          .then((res) => {
-            console.log('res', res);
-            this.weather = { ...res };
-            this.isLoading = false;
-          })
-          .catch((error) => {
-            console.log('error', error);
+  //   this.CountriesService.getCountryByCode(this.code)
+  //     .then((res) => {
+  //       this.country = { ...res };
+  //       this.WeatherService.getWeatherForCountry(this.country.name)
+  //         .then((res) => {
+  //           console.log('res', res);
+  //           this.weather = { ...res };
+  //           this.isLoading = false;
+  //         })
+  //         .catch((error) => {
+  //           console.log('error', error);
 
-            this.noWeather = true;
-            this.isLoading = false;
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.noCountry = true;
-        this.isLoading = false;
-      });
-  }
+  //           this.noWeather = true;
+  //           this.isLoading = false;
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       this.noCountry = true;
+  //       this.isLoading = false;
+  //     });
+  // }
 }

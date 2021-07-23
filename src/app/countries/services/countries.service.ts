@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CountryResult } from '../interfaces/country-results.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,8 @@ export class CountriesService {
     this.baseUrl = 'https://restcountries.eu/rest/v2/';
   }
 
-  searchCountry( term: string ): Observable<any>{
-    return this.http.get<any[]>(this.baseUrl+'name/'+term)
+  searchCountry( term: string ): Observable<CountryResult[]>{
+    return this.http.get<CountryResult[]>(this.baseUrl+'name/'+term)
   }
 
   getCountriesByRegion(region:string): Promise<any[]> {
