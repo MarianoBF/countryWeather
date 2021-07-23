@@ -4,7 +4,7 @@ import { CountriesService } from '../../services/countries.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-country',
+  selector: 'app-country-old',
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.css'],
 })
