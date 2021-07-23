@@ -1,1 +1,36 @@
-<p>country works!</p>
+<h2>Por País</h2>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="search()" autocomplete="off">
+            <input type="text" name="searchTerm" class="form-control" [(ngModel)]="searchTerm" placeholder="Buscar país...">
+        </form>
+    </div>
+</div>
+
+<div class="alert alert-danger">
+    No se encontraron resultados
+</div>
+
+<div class="row"><div class="col">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Bandera</th>
+                <th>Población</th>
+                <th>Más</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let result of results$ | async">
+                <td></td>
+                <td>{{result.name}}</td>
+                <td><img class="miniFlag" [src]="result.flag" [alt]="result.name"></td>
+                <td>{{result.population | number}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div></div>

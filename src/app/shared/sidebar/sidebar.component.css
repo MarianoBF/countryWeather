@@ -1,0 +1,8 @@
+.active {
+    color: red;
+    font-size: 2rem;
+}
+
+li {
+    cursor: pointer;
+}
