@@ -26,6 +26,10 @@ export class CountriesService {
       catchError(err=>of([])));
   }
 
+    getCountryByID( id: string ): Observable<CountryResult>{
+    return this.http.get<CountryResult>(this.baseUrl+'alpha/'+id)
+  }
+
   getCountriesByRegion(region:string): Promise<any[]> {
     return this.http.get<any[]>(
       this.baseUrl + 'region/' + region
