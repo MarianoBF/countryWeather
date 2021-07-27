@@ -29,7 +29,7 @@
                 <td>{{result.name}}</td>
                 <td><img class="miniFlag" [src]="result.flag" [alt]="result.name"></td>
                 <td>{{result.population | number}}</td>
-                <td></td>
+                <td><a [routerLink]="['/pais', result.alpha2Code]">ver más</a></td>
             </tr>
         </tbody>
     </table>

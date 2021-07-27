@@ -5,6 +5,9 @@ import { CountryComponent } from './pages/country/country.component';
 import { RegionComponent } from './pages/region/region.component';
 import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ResultsTableComponent } from './components/results-table/results-table.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 
 
@@ -13,7 +16,9 @@ import { FormsModule } from '@angular/forms';
     CapitalComponent,
     CountryComponent,
     RegionComponent,
-    CountryDetailComponent
+    CountryDetailComponent,
+    ResultsTableComponent,
+    SearchInputComponent
   ],
   exports: [
       CapitalComponent,
@@ -23,7 +28,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class CountriesModule { }
