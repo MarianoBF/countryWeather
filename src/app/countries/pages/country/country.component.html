@@ -8,11 +8,11 @@
     </div>
 </div>
 
-<div class="alert alert-danger">
+<div *ngIf="(results$ | async)?.length===0 && searched" class="alert alert-danger">
     No se encontraron resultados
 </div>
 
-<div class="row"><div class="col">
+<div *ngIf="(results$ | async)?.length!==0" class="row"><div class="col">
     <table class="table table-hover">
         <thead>
             <tr>

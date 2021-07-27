@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { CountryResult } from '../interfaces/country-results.interface';
 
 @Injectable({
@@ -15,6 +16,8 @@ export class CountriesService {
 
   searchCountry( term: string ): Observable<CountryResult[]>{
     return this.http.get<CountryResult[]>(this.baseUrl+'name/'+term)
+    .pipe(
+      catchError(err=>of([])));
   }
 
   getCountriesByRegion(region:string): Promise<any[]> {
