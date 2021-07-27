@@ -10,16 +10,15 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class CountryComponent {
   // results$: Observable<CountryResult[]> = of([]);
-  searchTerm: string = '';
   searched: boolean = false;
   results: CountryResult[] = [];
 
   constructor(private countriesService: CountriesService) {}
 
-  search() {
+  search(searchTerm: string) {
     this.searched = true;
     // this.results$ = this.countriesService.searchCountry(this.searchTerm);
-    this.countriesService.searchCountry(this.searchTerm).subscribe(
+    this.countriesService.searchCountry(searchTerm).subscribe(
       (resp) => {
         console.log("results",resp);
         this.results  = resp;
