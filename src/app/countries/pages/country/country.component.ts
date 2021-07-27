@@ -9,24 +9,24 @@ import { CountriesService } from '../../services/countries.service';
   styles: [],
 })
 export class CountryComponent {
-  results$: Observable<CountryResult[]> = of([]);
+  // results$: Observable<CountryResult[]> = of([]);
   searchTerm: string = '';
   searched: boolean = false;
+  results: CountryResult[] = [];
 
   constructor(private countriesService: CountriesService) {}
 
   search() {
     this.searched = true;
-    console.log(this.searchTerm);
-    this.results$ = this.countriesService.searchCountry(this.searchTerm);
-    // this.countriesService.searchCountry(this.searchTerm).subscribe(
-    //   (resp) => {
-    //     console.log("results",resp);
-    //   },
-    //   (err) => {
-    //     console.log('Hubo un error', err);
-    //     this.error = true;
-    //   }
-    // );
+    // this.results$ = this.countriesService.searchCountry(this.searchTerm);
+    this.countriesService.searchCountry(this.searchTerm).subscribe(
+      (resp) => {
+        console.log("results",resp);
+        this.results  = resp;
+      },
+      (err) => {
+        console.log('Hubo un error', err);
+      }
+    );
   }
 }
