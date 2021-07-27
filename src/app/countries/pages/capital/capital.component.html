@@ -1,1 +1,15 @@
-<p>capital works!</p>
+<h2>Por Capital</h2>
+
+<div class="row">
+    <div class="col">
+       <app-search-input (onEnter)="search($event)"></app-search-input>
+    </div>
+</div>
+
+<div *ngIf="results.length===0 && searched" class="alert alert-danger">
+    No se encontraron resultados
+</div>
+
+<div *ngIf="results.length>0" class="row"><div class="col">
+    <app-results-table [results]="results"></app-results-table>
+</div></div>

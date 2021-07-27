@@ -20,6 +20,12 @@ export class CountriesService {
       catchError(err=>of([])));
   }
 
+  searchCountryByCapital( term: string ): Observable<CountryResult[]>{
+    return this.http.get<CountryResult[]>(this.baseUrl+'capital/'+term)
+    .pipe(
+      catchError(err=>of([])));
+  }
+
   getCountriesByRegion(region:string): Promise<any[]> {
     return this.http.get<any[]>(
       this.baseUrl + 'region/' + region
