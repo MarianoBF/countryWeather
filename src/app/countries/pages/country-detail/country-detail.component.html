@@ -1,1 +1,13 @@
-<p>country-detail works!</p>
+<div class="alert alert-info" *ngIf="!countryData; else countryDiv">
+    Cargando país....
+</div>
+
+<ng-template #countryDiv>
+<div class="row">
+    <div class="col-12">
+        <h1>{{countryData.name}}</h1>
+        <img [src]="countryData.flag" class="medium-flag">
+        <p>{{countryData.population | number}}</p>
+    </div>
+</div>
+</ng-template>

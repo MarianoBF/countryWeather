@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { CountryResult } from '../../interfaces/country-results.interface';
 import { CountriesService } from '../../services/countries.service';
 
 @Component({
@@ -9,6 +10,9 @@ import { CountriesService } from '../../services/countries.service';
   styles: [],
 })
 export class CountryDetailComponent implements OnInit {
+
+  countryData!: CountryResult;
+
   constructor(
     private activateRoute: ActivatedRoute,
     private countriesService: CountriesService
@@ -16,9 +20,10 @@ export class CountryDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRoute.params.pipe(
-      switchMap(({id}) => this.countriesService.getCountryByID(id))
+      switchMap(({id}) => this.countriesService.getCountryByID(id)),
+      tap(console.log)
     ).subscribe(res => {
-      console.log(res);
+      this.countryData = res;
     });
   }
 }
