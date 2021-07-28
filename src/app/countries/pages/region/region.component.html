@@ -1,1 +1,16 @@
-<p>region works!</p>
+
+<!-- TODO: Translate region -->
+<h2>Por Región: {{activeRegion}}</h2>
+
+<div class="row">
+    <div class="col">
+        <button *ngFor="let region of regions" class="btn btn-outline-primary" [ngClass]="{
+            'btn-primary': activeRegion === region,
+            'btn-outline-primary': true
+        }" (click)="setActive(region)">{{region | titlecase}}</button>
+    </div>
+</div>
+
+<div *ngIf="results.length>0" class="row"><div class="col">
+    <app-results-table [results]="results"></app-results-table>
+</div></div>
