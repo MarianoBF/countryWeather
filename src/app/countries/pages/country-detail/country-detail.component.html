@@ -6,8 +6,13 @@
 <div class="row">
     <div class="col-12">
         <h1>{{countryData.name}}</h1>
-        <img [src]="countryData.flag" class="medium-flag">
-        <p>{{countryData.population | number}}</p>
+        <img [src]="countryData.flag" class="mediumFlag">
+        <p>Población: {{countryData.population | number}}</p>
+        <div><p class="label">Moneda:</p> <p *ngFor="let currency of countryData.currencies">{{currency.name}}</p></div>
+        <div><p class="label">Idioma:</p> <p *ngFor="let language of countryData.languages">{{language.name}}</p></div>
+        <div><p class="label">Bloques regionales:</p> <p *ngFor="let block of countryData.regionalBlocs">{{block.name}}</p></div>
+        <div><p class="label">Nombre en otros idiomas:</p> <p *ngFor="let trans of countryData.translations | keyvalue"><span class="language">{{trans.key}}:</span> {{trans.value}}</p></div>
+
     </div>
 </div>
 </ng-template>

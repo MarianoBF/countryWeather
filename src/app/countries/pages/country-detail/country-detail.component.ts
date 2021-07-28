@@ -7,7 +7,7 @@ import { CountriesService } from '../../services/countries.service';
 @Component({
   selector: 'app-country-detail',
   templateUrl: './country-detail.component.html',
-  styles: [],
+  styleUrls: ['./country-detail.component.css'],
 })
 export class CountryDetailComponent implements OnInit {
 

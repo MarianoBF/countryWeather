@@ -1,0 +1,14 @@
+.mediumFlag {
+    max-width: 300px;
+    max-height: 200px;
+    float: right;
+}
+
+.label {
+    font-weight: 600;
+    font-size: larger;
+}
+
+.language {
+    font-weight: bolder;
+}
