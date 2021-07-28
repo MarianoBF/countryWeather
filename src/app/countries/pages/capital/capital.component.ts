@@ -10,6 +10,7 @@ import { CountriesService } from '../../services/countries.service';
 export class CapitalComponent implements OnInit {
   searched: boolean = false;
   results: CountryResult[] = [];
+  suggested: CountryResult[] = [];
 
   constructor(private countriesService: CountriesService) {}
 
@@ -17,7 +18,6 @@ export class CapitalComponent implements OnInit {
 
   search(searchTerm: string) {
     this.searched = true;
-    // this.results$ = this.countriesService.searchCountry(this.searchTerm);
     this.countriesService.searchCountryByCapital(searchTerm).subscribe(
       (resp) => {
         console.log('results', resp);
@@ -27,5 +27,11 @@ export class CapitalComponent implements OnInit {
         console.log('Hubo un error', err);
       }
     );
+  }
+
+  suggest($event: string) {
+    this.countriesService.searchCountryByCapital($event).subscribe(
+      res => this.suggested = res.slice(0,7)
+    )
   }
 }

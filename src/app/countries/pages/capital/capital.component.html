@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col">
-       <app-search-input (onEnter)="search($event)" placeholder="Buscar país por capital..."></app-search-input>
+       <app-search-input (onEnter)="search($event)" placeholder="Buscar país por capital..." (onKeyPress)="suggest($event)" [suggested]="suggested"></app-search-input>
     </div>
 </div>
 
