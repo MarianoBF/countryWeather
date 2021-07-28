@@ -12,6 +12,7 @@ export class CountryComponent {
   // results$: Observable<CountryResult[]> = of([]);
   searched: boolean = false;
   results: CountryResult[] = [];
+  suggested: CountryResult[] = [];
 
   constructor(private countriesService: CountriesService) {}
 
@@ -27,5 +28,11 @@ export class CountryComponent {
         console.log('Hubo un error', err);
       }
     );
+  }
+
+  suggest($event: string) {
+    this.countriesService.searchCountry($event).subscribe(
+      res => this.suggested = res.slice(0,7)
+    )
   }
 }

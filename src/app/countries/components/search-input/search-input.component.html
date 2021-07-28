@@ -8,3 +8,11 @@
     [placeholder]="placeholder"
   />
 </form>
+<ul  *ngIf="showSuggestions" class="list-group">
+  <li *ngFor="let suggestion of suggested" class="list-group-item list-group-item-action">
+   <a class="nav-link" [routerLink]="['/pais', suggestion.alpha2Code]">  <img [src]="suggestion.flag" alt="flag" class="searchFlag"> {{suggestion.name}} </a>
+  </li>
+  <li class="list-group-item list-group-item-action" (click)="suggestionSearch()">
+    <a class="nav-link"> Buscar "{{searchTerm}}"" </a>
+   </li>
+</ul>

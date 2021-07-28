@@ -1,0 +1,8 @@
+li {
+    cursor: pointer;
+}
+
+.searchFlag {
+    max-width: 15px;
+    max-height: 10px;
+}
