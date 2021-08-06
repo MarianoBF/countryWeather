@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { FlagPipe } from './pipes/flag.pipe';
+import { FlagsComponent } from './pages/flags/flags.component';
 
 
 
@@ -20,7 +21,8 @@ import { FlagPipe } from './pipes/flag.pipe';
     CountryDetailComponent,
     ResultsTableComponent,
     SearchInputComponent,
-    FlagPipe
+    FlagPipe,
+    FlagsComponent
   ],
   exports: [
       CapitalComponent,

@@ -1,0 +1,10 @@
+<h2>Listado de banderas</h2>
+
+<div *ngIf="results.length>0" class="row">
+    <div class="col">
+        <div class="card" *ngFor="let result of results">
+            <p>{{result.name}}</p>
+            <img class="mediumFlag" [src]="result.flag" [alt]="result.name">
+        </div>
+    </div>
+</div>

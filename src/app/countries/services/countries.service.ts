@@ -47,4 +47,10 @@ export class CountriesService {
       params: this.httpParams,
     });
   }
+
+  getAllCountries(): Observable<CountryResult[]> {
+    return this.http.get<CountryResult[]>(this.baseUrl + 'all', {
+      params: this.httpParams,
+    });
+  }
 }
