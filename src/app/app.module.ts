@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { CountriesModule } from './countries/countries.module';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialUiModule } from './material-ui.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     CountriesModule,
     SharedModule,
+    BrowserAnimationsModule,
+    MaterialUiModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
