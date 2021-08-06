@@ -6,3 +6,7 @@ li {
     max-width: 15px;
     max-height: 10px;
 }
+
+.light {
+    background: #DDD
+}

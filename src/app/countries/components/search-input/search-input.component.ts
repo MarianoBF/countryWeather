@@ -35,4 +35,8 @@ export class SearchInputComponent implements OnInit {
     this.search();
     this.showSuggestions = false;
   }
+
+  selected($event: any) {
+    console.log($event)
+  }
 }

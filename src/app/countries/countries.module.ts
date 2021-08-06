@@ -10,6 +10,7 @@ import { ResultsTableComponent } from './components/results-table/results-table.
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { FlagPipe } from './pipes/flag.pipe';
 import { FlagsComponent } from './pages/flags/flags.component';
+import { MaterialUiModule } from '../material-ui.module';
 
 
 
@@ -33,7 +34,8 @@ import { FlagsComponent } from './pages/flags/flags.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MaterialUiModule
   ]
 })
 export class CountriesModule { }

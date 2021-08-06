@@ -6,13 +6,24 @@
     [(ngModel)]="searchTerm"
     (input)="keyPress()"
     [placeholder]="placeholder"
+    [matAutocomplete]="auto"
   />
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let suggestion of suggested" [value]="suggestion" class="light">
+      <a class="nav-link" [routerLink]="['/pais', suggestion.alpha2Code]">  <img [src]="suggestion.flag" alt="flag" class="searchFlag"> {{suggestion.name}} - {{suggestion.capital}} </a>    </mat-option>
+      <!-- <mat-option *ngIf="showSuggestions" (click)="suggestionSearch()" class="light">
+        <a class="nav-link"> Buscar "{{searchTerm}}"" </a>
+      </mat-option> -->
+      <mat-option *ngIf="suggested.length === 0 && searchTerm.length>2" class="light">
+        <p class="nav-link"> No se encuentran países por ahora </p>
+      </mat-option>
+  </mat-autocomplete>
 </form>
-<ul  *ngIf="showSuggestions" class="list-group">
+<!-- <ul  *ngIf="showSuggestions" class="list-group">
   <li *ngFor="let suggestion of suggested" class="list-group-item list-group-item-action">
    <a class="nav-link" [routerLink]="['/pais', suggestion.alpha2Code]">  <img [src]="suggestion.flag" alt="flag" class="searchFlag"> {{suggestion.name}} - {{suggestion.capital}} </a>
   </li>
   <li class="list-group-item list-group-item-action" (click)="suggestionSearch()">
     <a class="nav-link"> Buscar "{{searchTerm}}"" </a>
    </li>
-</ul>
+</ul> -->
