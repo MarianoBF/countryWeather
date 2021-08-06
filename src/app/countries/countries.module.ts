@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { FlagPipe } from './pipes/flag.pipe';
 
 
 
@@ -18,7 +19,8 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     RegionComponent,
     CountryDetailComponent,
     ResultsTableComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    FlagPipe
   ],
   exports: [
       CapitalComponent,
