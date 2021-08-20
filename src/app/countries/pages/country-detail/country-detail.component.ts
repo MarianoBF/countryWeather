@@ -30,7 +30,7 @@ export class CountryDetailComponent implements OnInit {
       this.countryData = res;
       this.WeatherService.getWeatherForCountry(this.countryData.name).then(res => { 
         this.weatherData = res;
-        console.log("weather", res) })
+      })
     });
     
   

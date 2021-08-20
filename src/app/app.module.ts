@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http"
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,11 @@ import { CountriesModule } from './countries/countries.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialUiModule } from './material-ui.module';
+import { registerLocaleData } from '@angular/common';
+import localeEsAr from '@angular/common/locales/es-AR';
+
+registerLocaleData(localeEsAr, 'es-Ar');
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,7 @@ import { MaterialUiModule } from './material-ui.module';
     BrowserAnimationsModule,
     MaterialUiModule,
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
