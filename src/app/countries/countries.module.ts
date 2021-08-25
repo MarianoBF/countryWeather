@@ -11,6 +11,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { FlagPipe } from './pipes/flag.pipe';
 import { FlagsComponent } from './pages/flags/flags.component';
 import { MaterialUiModule } from '../material-ui.module';
+import { BordersComponent } from './pages/borders/borders.component';
 
 
 
@@ -23,7 +24,8 @@ import { MaterialUiModule } from '../material-ui.module';
     ResultsTableComponent,
     SearchInputComponent,
     FlagPipe,
-    FlagsComponent
+    FlagsComponent,
+    BordersComponent
   ],
   exports: [
       CapitalComponent,

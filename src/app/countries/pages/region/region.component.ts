@@ -8,13 +8,15 @@ import { CountriesService } from '../../services/countries.service';
   styleUrls: ['./region.component.css'],
 })
 export class RegionComponent implements OnInit {
-  regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
+  regions: string[] = [];
   activeRegion: string = '';
   results: CountryResult[] = [];
 
   constructor(private countriesService: CountriesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.regions = this.countriesService.getRegions();
+  }
 
   setActive(region: string) {
     if (region !== this.activeRegion) {

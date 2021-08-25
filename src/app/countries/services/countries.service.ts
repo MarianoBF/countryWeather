@@ -10,6 +10,7 @@ import { CountryResult } from '../interfaces/country-results.interface';
 export class CountriesService {
   baseUrl: string;
   filter = '?fields=name;capital;population;alpha2Code;flag';
+  private _regions = ['africa', 'americas', 'asia', 'europe', 'oceania']
 
   get httpParams() {
     return new HttpParams().set(
@@ -52,5 +53,9 @@ export class CountriesService {
     return this.http.get<CountryResult[]>(this.baseUrl + 'all', {
       params: this.httpParams,
     });
+  }
+
+  getRegions(): string[] {
+    return [...this._regions]
   }
 }
