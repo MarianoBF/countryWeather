@@ -4,7 +4,7 @@ import { CapitalComponent } from './pages/capital/capital.component';
 import { CountryComponent } from './pages/country/country.component';
 import { RegionComponent } from './pages/region/region.component';
 import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ResultsTableComponent } from './components/results-table/results-table.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
@@ -37,7 +37,8 @@ import { BordersComponent } from './pages/borders/borders.component';
     CommonModule,
     FormsModule,
     RouterModule,
-    MaterialUiModule
+    MaterialUiModule,
+    ReactiveFormsModule
   ]
 })
 export class CountriesModule { }
