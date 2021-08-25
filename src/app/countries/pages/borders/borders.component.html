@@ -19,11 +19,20 @@
                 </option>
             </select>
 
-            <button type="submit">Buscar</button>
+            <label class="form-label">Países Limítrofes</label>
+            <select formControlName="borders" id="" class="form-control">
+                <option value="">Seleccioná</option>
+                <option *ngFor="let country of borders" [value]="country.alpha2Code">{{country.name | titlecase}}
+                </option>
+            </select>
+
+
+            <button type="submit">Ver limítrofe</button>
 
         </div>
     </div>
 </form>
+
 <div *ngIf="results.length>0" class="row">
     <div class="col">
         <app-results-table [results]="results"></app-results-table>

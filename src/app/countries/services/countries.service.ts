@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { combineLatest, Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CountryResult } from '../interfaces/country-results.interface';
 
@@ -15,7 +15,7 @@ export class CountriesService {
   get httpParams() {
     return new HttpParams().set(
       'fields',
-      'name;capital;population;alpha2Code;flag'
+      'name;capital;population;alpha2Code;flag;borders'
     );
   }
 
@@ -39,7 +39,14 @@ export class CountriesService {
       .pipe(catchError((err) => of([])));
   }
 
-  getCountryByID(id: string): Observable<CountryResult> {
+  getCountryByID(id: string): Observable<CountryResult | null> {
+    if (!id) {
+      return of(null);
+    }
+    return this.http.get<CountryResult>(this.baseUrl + 'alpha/' + id);
+  }
+
+  getCountryByIDNotNull(id: string): Observable<CountryResult> {
     return this.http.get<CountryResult>(this.baseUrl + 'alpha/' + id);
   }
 
@@ -58,4 +65,27 @@ export class CountriesService {
   getRegions(): string[] {
     return [...this._regions]
   }
+
+  getCountriesByCode( borders: string[]): Observable<CountryResult[] | null> {
+    if (!borders || borders.length === 0) {
+      return of(null);
+    }
+    
+    const results: Observable<CountryResult>[] = [];
+
+    borders.forEach( code => {
+      const country = this.getCountryByIDNotNull(code);
+      if (country) {
+      results.push(country)
+      };
+    })
+    
+    return combineLatest(results).pipe(catchError((err) => of(null)));
+
+    // return this.http.get<CountryResult[]>(this.baseUrl + 'borders/' + borders.join(','), {
+    //   params: this.httpParams,
+    // });
+  }
+
+
 }

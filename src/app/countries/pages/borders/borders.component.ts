@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountryResult } from '../../interfaces/country-results.interface';
 import { CountriesService } from '../../services/countries.service';
-import { switchMap, tap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-borders',
@@ -14,9 +14,11 @@ export class BordersComponent implements OnInit {
   activeRegion: string = '';
   results: CountryResult[] = [];
   countries: CountryResult[] = [];
+  borders: CountryResult[] = [];
   bordersForm: FormGroup = this.fb.group({
     region: ['', Validators.required],
-    country: ['', Validators.required]
+    country: [{value:'', disabled: true}, Validators.required],
+    borders: [{value:'', disabled: true}, Validators.required]
   })
 
   constructor(private countriesService: CountriesService, private fb:FormBuilder) {}
@@ -33,11 +35,29 @@ export class BordersComponent implements OnInit {
 
   this.bordersForm.get('region')?.valueChanges.pipe(
     tap( _ => {
+      this.bordersForm.get('borders')?.disable();
       this.bordersForm.get('country')?.reset('');
     }),
     switchMap( region => this.countriesService.getCountriesByRegion(region) )).subscribe( res => {
     this.countries = res;
-    console.log("res", res);
+    this.bordersForm.get('country')?.enable();
+  })
+
+  this.bordersForm.get('country')?.valueChanges
+  .pipe(
+    tap( _ => {
+      this.borders = [];
+      this.bordersForm.get('borders')?.reset('');
+      this.bordersForm.get('borders')?.disable();
+    }),
+    filter(x=>x!=''),
+    switchMap( code => this.countriesService.getCountryByID(code) ),
+    switchMap( country => this.countriesService.getCountriesByCode(country?.borders!) ))
+    .subscribe( res => {
+    // this.borders = res;
+    console.log("res", res)
+    this.borders = res || [];
+    this.bordersForm.get('borders')?.enable();
   })
 
 }
