@@ -1,1 +1,6 @@
-<p>markers works!</p>
+<div #map class="mapContainer"></div>
+
+<button class="btn btn-primary" (click)="addMarker()">Agregar marcador</button>
+
+Lista de marcadores:
+<div *ngFor="let marker of markers; index as i" ><button class="btn btn-primary" (click)="goToMarker(marker)">marker{{i}} </button><button (click)="deleteMarker(i)" class="btn btn-danger">Borrar!</button></div>

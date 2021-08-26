@@ -13,3 +13,9 @@
 .language {
     font-weight: bolder;
 }
+
+.map {
+    margin: 50px auto;
+    width: 600px;
+    height: 600px;
+}
