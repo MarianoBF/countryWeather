@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialUiModule } from './material-ui.module';
 import { registerLocaleData } from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
+import { MapsModule } from './maps/maps.module';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -29,6 +30,7 @@ registerLocaleData(localeEsAr, 'es-Ar');
     SharedModule,
     BrowserAnimationsModule,
     MaterialUiModule,
+    MapsModule,
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
