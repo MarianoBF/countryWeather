@@ -19,12 +19,12 @@ const routes: Routes = [
   {path: "pais/:id", component: CountryDetailComponent, pathMatch: 'full'},
   {path: "banderas", component: FlagsComponent, pathMatch: 'full'},
   {path: "bordes", component: BordersComponent, pathMatch: 'full'},
+  {path: "mapas/completo", component: FullMapComponent, pathMatch: 'full'},
+  {path: "mapas/mini", component: MinMapComponent, pathMatch: 'full'},
+  {path: "mapas/marcadores", component: MarkersComponent, pathMatch: 'full'},
+  {path: "mapas/zoom", component: ZoomComponent, pathMatch: 'full'},
+  {path: "mapas/propiedades", component: PropertiesComponent, pathMatch: 'full'},
   {path: "**", redirectTo: "/"},
-  {path: "/mapas/completo", component: FullMapComponent, pathMatch: 'full'},
-  {path: "/mapas/mini", component: MinMapComponent, pathMatch: 'full'},
-  {path: "/mapas/marcadores", component: MarkersComponent, pathMatch: 'full'},
-  {path: "/mapas/zoom", component: ZoomComponent, pathMatch: 'full'},
-  {path: "/mapas/propiedades", component: PropertiesComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

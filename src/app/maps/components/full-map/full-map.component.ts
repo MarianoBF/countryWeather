@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapsService } from '../../services/maps.service';
 
 @Component({
   selector: 'app-full-map',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FullMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mapsSvc:MapsService) { }
 
   ngOnInit(): void {
+    
   }
 
 }
