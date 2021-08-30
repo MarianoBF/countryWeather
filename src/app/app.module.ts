@@ -5,13 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './shared/loading/loading.component';
-import { CountriesModule } from './countries/countries.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialUiModule } from './material-ui.module';
 import { registerLocaleData } from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
-import { MapsModule } from './maps/maps.module';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -26,11 +24,9 @@ registerLocaleData(localeEsAr, 'es-Ar');
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CountriesModule,
     SharedModule,
     BrowserAnimationsModule,
     MaterialUiModule,
-    MapsModule,
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es-Ar' }],
   bootstrap: [AppComponent]
