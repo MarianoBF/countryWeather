@@ -20,6 +20,7 @@ export class BordersComponent implements OnInit {
     country: [{value:'', disabled: true}, Validators.required],
     borders: [{value:'', disabled: true}, Validators.required]
   })
+  loading = false;
 
   constructor(private countriesService: CountriesService, private fb:FormBuilder) {}
 

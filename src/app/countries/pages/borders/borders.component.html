@@ -20,12 +20,14 @@
             </select>
 
             <label class="form-label">Países Limítrofes</label>
-            <select formControlName="borders" id="" class="form-control">
+            <select *ngIf="borders.length>0 || bordersForm.controls.country.value == '' || loading" formControlName="borders" id="" class="form-control">
                 <option value="">Seleccioná</option>
                 <option *ngFor="let country of borders" [value]="country.alpha2Code">{{country.name | titlecase}}
                 </option>
             </select>
-
+            <div *ngIf="countries.length > 1 && borders.length===0 && bordersForm.controls.country.value !== '' && !loading">
+                <p>El país seleccionado no tiene países limítrofes</p>                
+            </div>
 
             <button type="submit">Ver limítrofe</button>
 
