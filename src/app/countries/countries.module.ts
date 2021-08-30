@@ -12,6 +12,7 @@ import { FlagPipe } from './pipes/flag.pipe';
 import { FlagsComponent } from './pages/flags/flags.component';
 import { MaterialUiModule } from '../material-ui.module';
 import { BordersComponent } from './pages/borders/borders.component';
+import { CountriesRoutingModule } from './countries-routing.module';
 
 
 
@@ -34,9 +35,9 @@ import { BordersComponent } from './pages/borders/borders.component';
       CountryDetailComponent
   ],
   imports: [
+    CountriesRoutingModule,
     CommonModule,
     FormsModule,
-    RouterModule,
     MaterialUiModule,
     ReactiveFormsModule
   ]
