@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountryResult } from '../../interfaces/country-results.interface';
 import { CountriesService } from '../../services/countries.service';
 import { filter, switchMap, tap } from 'rxjs/operators';
+import * as mapboxgl from 'mapbox-gl';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-borders',
@@ -53,10 +55,18 @@ export class BordersComponent implements OnInit {
     }),
     filter(x=>x!=''),
     switchMap( code => this.countriesService.getCountryByID(code) ),
+    tap(country => { 
+      console.log("tap country", country)
+      const location: [number, number] = [country?.latlng[1]||0,country?.latlng[0]||0];
+      (mapboxgl as any).accessToken = environment.mapboxAccess;
+      let map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: location,
+      zoom: 4
+      });} ),
     switchMap( country => this.countriesService.getCountriesByCode(country?.borders!) ))
     .subscribe( res => {
-    // this.borders = res;
-    console.log("res", res)
     this.borders = res || [];
     this.bordersForm.get('borders')?.enable();
   })

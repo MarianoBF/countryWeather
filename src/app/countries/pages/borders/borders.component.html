@@ -1,7 +1,4 @@
-<p>borders works!</p>
-
-<!-- TODO: Translate region -->
-<h2>Por Región: {{activeRegion}}</h2>
+<h2>Buscar países limítrofes</h2>
 
 <form [formGroup]="bordersForm" (ngSubmit)="submit()">
     <div class="row">
@@ -19,24 +16,25 @@
                 </option>
             </select>
 
-            <label class="form-label">Países Limítrofes</label>
-            <select *ngIf="borders.length>0 || bordersForm.controls.country.value == '' || loading" formControlName="borders" id="" class="form-control">
+            <!-- <select *ngIf="borders.length>0 || bordersForm.controls.country.value == '' || loading" formControlName="borders" id="" class="form-control">
                 <option value="">Seleccioná</option>
                 <option *ngFor="let country of borders" [value]="country.alpha2Code">{{country.name | titlecase}}
                 </option>
             </select>
             <div *ngIf="countries.length > 1 && borders.length===0 && bordersForm.controls.country.value !== '' && !loading">
                 <p>El país seleccionado no tiene países limítrofes</p>                
-            </div>
-
-            <button type="submit">Ver limítrofe</button>
+            </div> -->
 
         </div>
     </div>
 </form>
 
-<div *ngIf="results.length>0" class="row">
+<div *ngIf="borders.length>0" class="row">
     <div class="col">
-        <app-results-table [results]="results"></app-results-table>
+        <h2 class="bordersTitle">Países con los que comparte frontera</h2>
+        <app-results-table [results]="borders"></app-results-table>
     </div>
 </div>
+
+
+<div class="map" id="map"></div>
