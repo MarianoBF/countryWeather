@@ -16,23 +16,17 @@
                 </option>
             </select>
 
-            <!-- <select *ngIf="borders.length>0 || bordersForm.controls.country.value == '' || loading" formControlName="borders" id="" class="form-control">
-                <option value="">Seleccioná</option>
-                <option *ngFor="let country of borders" [value]="country.alpha2Code">{{country.name | titlecase}}
-                </option>
-            </select>
-            <div *ngIf="countries.length > 1 && borders.length===0 && bordersForm.controls.country.value !== '' && !loading">
-                <p>El país seleccionado no tiene países limítrofes</p>                
-            </div> -->
-
         </div>
     </div>
 </form>
 
-<div *ngIf="borders.length>0" class="row">
+<div *ngIf="borders.length>0 || bordersForm.controls.country.value !== ''" class="row">
     <div class="col">
         <h2 class="bordersTitle">Países con los que comparte frontera</h2>
-        <app-results-table [results]="borders"></app-results-table>
+        <app-results-table *ngIf="borders.length>0" [results]="borders"></app-results-table>
+        <div *ngIf="countries.length > 1 && borders.length===0 && bordersForm.controls.country.value !== '' && !loading">
+            <p>El país seleccionado no tiene países limítrofes</p>
+        </div>
     </div>
 </div>
 
