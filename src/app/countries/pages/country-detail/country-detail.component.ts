@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { CountryResult } from '../../interfaces/country-results.interface';
 import { CountriesService } from '../../services/countries.service';
-import { WeatherService } from '../../../services/weather.service';
+import { WeatherService } from '../../services/weather.service';
 import { WeatherResults } from '../../interfaces/weather-results.interface';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
