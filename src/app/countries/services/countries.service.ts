@@ -15,12 +15,12 @@ export class CountriesService {
   get httpParams() {
     return new HttpParams().set(
       'fields',
-      'name;capital;population;alpha2Code;flag;borders'
+      'name,capital,population,alpha2Code,flag,borders'
     );
   }
 
   constructor(private http: HttpClient) {
-    this.baseUrl = 'https://restcountries.eu/rest/v2/';
+    this.baseUrl = 'https://restcountries.com/v2/';
   }
 
   searchCountry(term: string): Observable<CountryResult[]> {
