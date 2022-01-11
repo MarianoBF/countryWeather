@@ -14,6 +14,7 @@ const routes: Routes = [
     { path: "pais/:id", component: CountryDetailComponent, pathMatch: 'full' },
     { path: "banderas", component: FlagsComponent, pathMatch: 'full' },
     { path: "bordes", component: BordersComponent, pathMatch: 'full' },
+    { path: "", redirectTo: 'pais'}
 ];
 
 @NgModule({
