@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CountryResult } from '../../interfaces/country-results.interface';
 import { CountriesService } from '../../services/countries.service';
 import { filter, switchMap, tap } from 'rxjs/operators';
@@ -17,14 +17,14 @@ export class BordersComponent implements OnInit {
   results: CountryResult[] = [];
   countries: CountryResult[] = [];
   borders: CountryResult[] = [];
-  bordersForm: FormGroup = this.fb.group({
+  bordersForm: UntypedFormGroup = this.fb.group({
     region: ['', Validators.required],
     country: [{value:'', disabled: true}, Validators.required],
     borders: [{value:'', disabled: true}, Validators.required]
   })
   loading = false;
 
-  constructor(private countriesService: CountriesService, private fb:FormBuilder) {}
+  constructor(private countriesService: CountriesService, private fb:UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.regions = this.countriesService.getRegions();
