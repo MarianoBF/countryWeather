@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 
 @NgModule({
   exports: [
